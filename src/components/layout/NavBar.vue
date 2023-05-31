@@ -3,6 +3,7 @@ import { RouterLink } from 'vue-router'
 import BurgerIcon from './icons/BurgerIcon.vue'
 import HomeIcon from './icons/HomeIcon.vue'
 import StatsIcon from './icons/StatsIcon.vue'
+import ThemeToggle from './components/ThemeToggle.vue'
 </script>
 
 <template>
@@ -48,6 +49,7 @@ import StatsIcon from './icons/StatsIcon.vue'
             </RouterLink>
           </li>
         </ul>
+        <ThemeToggle />
       </div>
     </nav>
   </header>
