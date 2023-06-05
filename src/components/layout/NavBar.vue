@@ -8,7 +8,7 @@ import ThemeToggle from './components/ThemeToggle.vue'
 
 <template>
   <header class="bg-neutral">
-    <nav class="navbar mx-auto max-w-5xl px-4 sm:px-8 lg:px-0">
+    <nav class="navbar mx-auto max-w-5xl px-4 sm:px-8 xl:px-0">
       <div class="navbar-start sm:hidden">
         <div class="dropdown">
           <label tabindex="0" class="btn-ghost btn-circle btn">
