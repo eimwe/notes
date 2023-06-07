@@ -1,5 +1,5 @@
 import { ref } from 'vue'
-import { defineStore } from 'pinia'
+import { defineStore, acceptHMRUpdate } from 'pinia'
 
 interface Note {
   id: number
@@ -22,3 +22,7 @@ export const useNoteStore = defineStore('notes', () => {
 
   return { note, notes, addNote }
 })
+
+if (import.meta.hot) {
+  import.meta.hot.accept(acceptHMRUpdate(useNoteStore, import.meta.hot))
+}
