@@ -2,6 +2,14 @@
 import ButtonSlot from '../button/ButtonSlot.vue'
 import EditIcon from './icons/EditIcon.vue'
 import DeleteIcon from './icons/DeleteIcon.vue'
+import { useNoteStore } from '@/stores/notes'
+import type { ID } from '@/types'
+
+const props = defineProps<{
+  id: ID
+}>()
+
+const store = useNoteStore()
 </script>
 
 <template>
@@ -15,7 +23,7 @@ import DeleteIcon from './icons/DeleteIcon.vue'
           <EditIcon />
           <span class="hidden sm:block">Edit</span>
         </ButtonSlot>
-        <ButtonSlot class="btn-sm btn-ghost gap-2">
+        <ButtonSlot @click="store.deleteNote(props.id)" class="btn-sm btn-ghost gap-2">
           <DeleteIcon />
           <span class="hidden sm:block">Delete</span>
         </ButtonSlot>
