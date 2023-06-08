@@ -1,6 +1,6 @@
 import { ref } from 'vue'
 import { defineStore, acceptHMRUpdate } from 'pinia'
-import type { Note } from '@/types'
+import type { Note, ID } from '@/types'
 
 export const useNoteStore = defineStore('notes', () => {
   const note = ref('')
@@ -16,7 +16,11 @@ export const useNoteStore = defineStore('notes', () => {
     note.value = ''
   }
 
-  return { note, notes, addNote }
+  const deleteNote = (noteId: ID) => {
+    notes.value = notes.value.filter((note) => note.id !== noteId)
+  }
+
+  return { note, notes, addNote, deleteNote }
 })
 
 if (import.meta.hot) {
