@@ -1,17 +1,13 @@
 import { ref } from 'vue'
 import { defineStore, acceptHMRUpdate } from 'pinia'
-
-interface Note {
-  id: number
-  memo: string
-}
+import type { Note } from '@/types'
 
 export const useNoteStore = defineStore('notes', () => {
   const note = ref('')
   const notes = ref<Note[]>([])
 
   const addNote = () => {
-    const newNote = {
+    const newNote: Note = {
       id: Math.ceil(Math.random() * 1000000),
       memo: note.value
     }
