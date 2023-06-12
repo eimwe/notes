@@ -5,4 +5,9 @@ interface Note {
   memo: string
 }
 
-export type { ID, Note }
+interface ModalParams {
+  title: string
+  id?: ID
+}
+
+export type { ID, Note, ModalParams }
