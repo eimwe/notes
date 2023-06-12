@@ -16,11 +16,36 @@ export const useNoteStore = defineStore('notes', () => {
     note.value = ''
   }
 
+  const findNote = (noteId: ID) => {
+    const noteToEdit = notes.value.find((note) => note.id === noteId)
+
+    if (noteToEdit) {
+      note.value = noteToEdit?.memo
+    }
+  }
+
+  const editNote = (noteId: ID) => {
+    const foundIndex = notes.value.findIndex((note) => note.id === noteId)
+
+    notes.value[foundIndex] = {
+      id: noteId,
+      memo: note.value
+    }
+  }
+
+  const changeNotes = (noteId?: ID) => {
+    if (noteId) {
+      editNote(noteId)
+    } else {
+      addNote()
+    }
+  }
+
   const deleteNote = (noteId: ID) => {
     notes.value = notes.value.filter((note) => note.id !== noteId)
   }
 
-  return { note, notes, addNote, deleteNote }
+  return { note, notes, deleteNote, findNote, changeNotes }
 })
 
 if (import.meta.hot) {
