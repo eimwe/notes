@@ -2,13 +2,17 @@
 import ButtonSlot from '../button/ButtonSlot.vue'
 import AddNoteIcon from './icons/AddNoteIcon.vue'
 import useModal from '../../composables/useModal'
+import { useNoteStore } from '@/stores/notes'
 
 const { openModal } = useModal()
 
-const emit = defineEmits(['addNote'])
+const emit = defineEmits(['add-note'])
+
+const store = useNoteStore()
 
 const addNote = () => {
-  emit('addNote')
+  emit('add-note')
+  store.note = ''
   openModal()
 }
 </script>
