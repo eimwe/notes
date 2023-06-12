@@ -4,12 +4,23 @@ import EditIcon from './icons/EditIcon.vue'
 import DeleteIcon from './icons/DeleteIcon.vue'
 import { useNoteStore } from '@/stores/notes'
 import type { ID } from '@/types'
+import useModal from '@/composables/useModal'
+
+const { openModal } = useModal()
 
 const props = defineProps<{
   id: ID
 }>()
 
+const emit = defineEmits(['edit-note'])
+
 const store = useNoteStore()
+
+const editNote = () => {
+  emit('edit-note')
+  store.findNote(props.id)
+  openModal()
+}
 </script>
 
 <template>
@@ -19,7 +30,7 @@ const store = useNoteStore()
         <p>Edit or delete the default contents of this card</p>
       </slot>
       <div class="card-actions justify-between">
-        <ButtonSlot class="btn-sm btn-secondary gap-2">
+        <ButtonSlot @click="editNote" class="btn-sm btn-secondary gap-2">
           <EditIcon />
           <span class="hidden sm:block">Edit</span>
         </ButtonSlot>
