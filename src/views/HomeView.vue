@@ -27,9 +27,8 @@ const editNote = (noteId: number) => {
       v-for="note in store.notes"
       :key="note.id"
       :id="note.id"
+      :memo="note.memo"
       @edit-note="editNote(note.id)"
-    >
-      {{ note.memo }}
-    </NoteCard>
+    />
   </section>
 </template>

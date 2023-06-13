@@ -10,6 +10,7 @@ const { openModal } = useModal()
 
 const props = defineProps<{
   id: ID
+  memo: string
 }>()
 
 const emit = defineEmits(['edit-note'])
@@ -26,9 +27,9 @@ const editNote = () => {
 <template>
   <div class="card bg-neutral text-neutral-content">
     <div class="card-body gap-4">
-      <slot>
-        <p>Edit or delete the default contents of this card</p>
-      </slot>
+      <p class="w-fit max-w-[15rem] break-words lg:max-w-[17rem]">
+        {{ props.memo }}
+      </p>
       <div class="card-actions justify-between">
         <ButtonSlot @click="editNote" class="btn-sm btn-secondary gap-2">
           <EditIcon />
