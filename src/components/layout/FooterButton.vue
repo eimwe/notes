@@ -18,7 +18,7 @@ const addNote = () => {
 </script>
 
 <template>
-  <footer class="sticky top-[100vh]">
+  <footer class="fixed bottom-px w-full">
     <div class="flex justify-end mx-auto max-w-5xl px-4 py-6 sm:px-8 xl:px-0">
       <ButtonSlot @click="addNote" class="btn-lg btn-circle btn-accent mx-2 focus:outline-neutral">
         <AddNoteIcon class="h-8 w-8" />
