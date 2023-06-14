@@ -13,16 +13,20 @@ const props = defineProps<{
 
 <template>
   <form method="dialog" @submit="store.changeNotes(id)">
-    <h3 class="font-bold text-lg mb-6">
-      {{ props.title }}
-    </h3>
     <div class="grid gap-4">
+      <label for="text-note" class="font-bold text-lg">{{ props.title }}</label>
       <textarea
         v-model.trim="store.note"
+        id="text-note"
+        name="text-note"
         placeholder="What's on your mind?"
         class="textarea textarea-bordered textarea-ghost focus:textarea-ghost textarea-primary textarea-lg w-full placeholder:text-slate-500"
+        autofocus
+        required
       ></textarea>
-      <ButtonSlot class="btn-primary sm:btn-sm sm:justify-self-end"> Save </ButtonSlot>
+      <ButtonSlot class="btn-primary sm:btn-sm sm:justify-self-end" :disabled="!store.note">
+        Save
+      </ButtonSlot>
     </div>
   </form>
 </template>
