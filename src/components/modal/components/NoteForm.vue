@@ -1,18 +1,27 @@
 <script setup lang="ts">
 import { useNoteStore } from '../../../stores/notes'
+import useModal from '../../../composables/useModal'
 import ButtonSlot from '../../button/ButtonSlot.vue'
 import type { ID } from '@/types'
 
 const store = useNoteStore()
+const { closeModal } = useModal()
 
 const props = defineProps<{
   title: string
   id?: ID
 }>()
+
+const submitForm = () => {
+  if (!store.note) return
+
+  store.changeNotes(props.id)
+  closeModal()
+}
 </script>
 
 <template>
-  <form method="dialog" @submit="store.changeNotes(id)">
+  <form method="dialog" @submit="store.changeNotes(id)" @keydown.enter.prevent="submitForm">
     <div class="grid gap-4">
       <label for="text-note" class="font-bold text-lg">{{ props.title }}</label>
       <textarea
