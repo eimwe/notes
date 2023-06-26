@@ -4,6 +4,7 @@ import BurgerIcon from './icons/BurgerIcon.vue'
 import HomeIcon from './icons/HomeIcon.vue'
 import StatsIcon from './icons/StatsIcon.vue'
 import ThemeToggle from './components/ThemeToggle.vue'
+import closeDropdown from '../../helpers/closeDropdown'
 </script>
 
 <template>
@@ -19,13 +20,13 @@ import ThemeToggle from './components/ThemeToggle.vue'
             class="dropdown-content menu rounded-box menu-compact mt-3 w-52 bg-neutral-content p-2 text-neutral shadow"
           >
             <li>
-              <RouterLink to="/" active-class="active">
+              <RouterLink to="/" active-class="active" @click="closeDropdown">
                 <HomeIcon />
                 Homepage
               </RouterLink>
             </li>
             <li>
-              <RouterLink to="/stats" active-class="active">
+              <RouterLink to="/stats" active-class="active" @click="closeDropdown">
                 <StatsIcon />
                 Statistics
               </RouterLink>
