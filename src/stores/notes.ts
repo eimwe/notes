@@ -1,4 +1,4 @@
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { defineStore, acceptHMRUpdate } from 'pinia'
 import type { Note, ID } from '@/types'
 
@@ -16,13 +16,15 @@ export const useNoteStore = defineStore('notes', () => {
     note.value = ''
   }
 
-  const findNote = (noteId: ID) => {
-    const noteToEdit = notes.value.find((note) => note.id === noteId)
+  const findNote = computed(() => {
+    return (noteId: ID) => {
+      const noteToEdit = notes.value.find((note) => note.id === noteId)
 
-    if (noteToEdit) {
-      note.value = noteToEdit?.memo
+      if (noteToEdit) {
+        return (note.value = noteToEdit?.memo)
+      }
     }
-  }
+  })
 
   const editNote = (noteId: ID) => {
     const foundIndex = notes.value.findIndex((note) => note.id === noteId)
