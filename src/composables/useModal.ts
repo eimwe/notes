@@ -1,12 +1,8 @@
 import { ref } from 'vue'
-
-interface modalMethods {
-  showModal: () => null
-  close: () => null
-}
+import type { ModalMethods } from '@/types'
 
 const isShowModal = ref(false)
-const modalRef = ref<null | modalMethods>(null)
+const modalRef = ref<null | ModalMethods>(null)
 
 const openModal = () => {
   modalRef.value?.showModal()

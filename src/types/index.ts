@@ -10,4 +10,9 @@ interface ModalParams {
   id?: ID
 }
 
-export type { ID, Note, ModalParams }
+interface ModalMethods {
+  showModal: () => null
+  close: () => null
+}
+
+export type { ID, Note, ModalParams, ModalMethods }
