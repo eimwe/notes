@@ -5,6 +5,7 @@ import type { Note, ID } from '@/types'
 export const useNoteStore = defineStore('notes', () => {
   const note = ref('')
   const notes = ref<Note[]>([])
+  const characterLimit = 140
 
   const addNote = () => {
     const newNote: Note = {
@@ -47,7 +48,7 @@ export const useNoteStore = defineStore('notes', () => {
     notes.value = notes.value.filter((note) => note.id !== noteId)
   }
 
-  return { note, notes, deleteNote, findNote, changeNotes }
+  return { note, notes, deleteNote, findNote, changeNotes, characterLimit }
 })
 
 if (import.meta.hot) {

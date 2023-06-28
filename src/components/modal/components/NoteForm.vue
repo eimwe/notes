@@ -7,7 +7,6 @@ import type { ID } from '@/types'
 
 const store = useNoteStore()
 const { closeModal } = useModal()
-const maxlength = 140
 
 const props = defineProps<{
   title: string
@@ -32,12 +31,12 @@ const submitForm = () => {
         name="text-note"
         placeholder="What's on your mind?"
         class="textarea textarea-bordered textarea-ghost focus:textarea-ghost textarea-primary textarea-lg w-full placeholder:text-slate-500"
-        :maxlength="maxlength"
+        :maxlength="store.characterLimit"
         autofocus
         required
       ></textarea>
       <div
-        v-show="store.note.length === maxlength"
+        v-show="store.note.length === store.characterLimit"
         class="alert alert-warning flex-row justify-normal p-[0.5rem] my-0"
       >
         <WarningIcon />
