@@ -27,6 +27,20 @@ export const useNoteStore = defineStore('notes', () => {
     }
   })
 
+  const countNotes = computed(() => {
+    return notes.value.length
+  })
+
+  const countCharacters = computed(() => {
+    let characterCount = 0
+
+    notes.value.forEach((note) => {
+      characterCount += note.memo.length
+    })
+
+    return characterCount
+  })
+
   const editNote = (noteId: ID) => {
     const foundIndex = notes.value.findIndex((note) => note.id === noteId)
 
@@ -48,7 +62,16 @@ export const useNoteStore = defineStore('notes', () => {
     notes.value = notes.value.filter((note) => note.id !== noteId)
   }
 
-  return { note, notes, deleteNote, findNote, changeNotes, characterLimit }
+  return {
+    note,
+    notes,
+    deleteNote,
+    findNote,
+    changeNotes,
+    characterLimit,
+    countNotes,
+    countCharacters
+  }
 })
 
 if (import.meta.hot) {
