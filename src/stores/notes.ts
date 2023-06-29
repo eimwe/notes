@@ -1,10 +1,11 @@
 import { ref, computed } from 'vue'
 import { defineStore, acceptHMRUpdate } from 'pinia'
+import { useLocalStorage } from '@vueuse/core'
 import type { Note, ID } from '@/types'
 
 export const useNoteStore = defineStore('notes', () => {
   const note = ref('')
-  const notes = ref<Note[]>([])
+  const notes = useLocalStorage<Note[]>('notes', [])
   const characterLimit = 140
 
   const addNote = () => {
