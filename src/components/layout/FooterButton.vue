@@ -18,8 +18,8 @@ const addNote = () => {
 </script>
 
 <template>
-  <footer class="fixed bottom-px w-full">
-    <div class="flex justify-end mx-auto max-w-5xl px-4 py-6 sm:px-8 xl:px-0">
+  <footer class="fixed bottom-px right-0 xl:w-full">
+    <div class="mx-auto max-w-5xl px-4 py-6 sm:px-8 xl:px-0 xl:flex xl:justify-end">
       <ButtonSlot @click="addNote" class="btn-lg btn-circle btn-accent mx-2 focus:outline-neutral">
         <AddNoteIcon class="h-8 w-8" />
         <span class="sr-only">Add new note</span>
