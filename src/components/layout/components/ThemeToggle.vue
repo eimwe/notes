@@ -18,6 +18,7 @@ const isDark = useDark({
   <div class="form-control p-2">
     <span class="sr-only">Toggle the light/dark mode</span>
     <label class="swap sm:hidden">
+      <span class="sr-only">Toggle theme</span>
       <input
         v-model="isDark"
         name="toggle-theme"
@@ -29,6 +30,7 @@ const isDark = useDark({
       <SunIcon class="swap-off h-8 w-8 stroke-current text-neutral-content" />
     </label>
     <label class="relative hidden sm:flex">
+      <span class="sr-only">Toggle theme</span>
       <MoonIcon
         class="pointer-events-none absolute inset-y-0 top-1 right-1 h-4 w-4 stroke-current"
       />
