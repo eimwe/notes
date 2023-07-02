@@ -33,11 +33,11 @@ const editNote = () => {
       <div class="card-actions justify-between">
         <ButtonSlot @click="editNote" class="btn-sm btn-secondary gap-2">
           <EditIcon />
-          <span class="hidden sm:block">Edit</span>
+          <span class="sr-only sm:not-sr-only">Edit</span>
         </ButtonSlot>
         <ButtonSlot @click="store.deleteNote(props.id)" class="btn-sm btn-ghost gap-2">
           <DeleteIcon />
-          <span class="hidden sm:block">Delete</span>
+          <span class="sr-only sm:not-sr-only">Delete</span>
         </ButtonSlot>
       </div>
     </div>
